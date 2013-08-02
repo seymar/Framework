@@ -1,24 +1,25 @@
-<?php 
+<?php
+
+/**
+ * Router
+ */
+require_once 'library/Router.php';
+
+$route = new Router();
 
 /**
  * Dispatch
  */
-if(!isset($_GET['controller'])) {
-	$controllerName = 'index';
-} else {
-	$controllerName = $_GET['controller'];
-}
-
-$controllerName = ucfirst($controllerName) . 'Controller';
+$controllerClassName = ucfirst($route->controller) . 'Controller';
 
 require_once 'application/Controller/Controller.php';
-require_once 'application/Controller/' . $controllerName . '.php';
+require_once 'application/Controller/' . $controllerClassName . '.php';
 
-$controller = new $controllerName;
+$controller = new $controllerClassName();
 
 //Action
-$controller->action = 'index';
+$controller->action = $route->action;
 
-$controller->execute();
+$controller->execute($route->parameters);
 
 ?>
