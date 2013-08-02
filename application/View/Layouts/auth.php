@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>CMS</title>
+		<title>Login page layout</title>
 		
 		<link rel="stylesheet" href="css/main.css" />
 	</head>

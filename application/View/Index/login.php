@@ -1,5 +1,6 @@
 <?php
 
+// Use the auth.php layout
 $layout = 'auth';
 
 ?><form action="" method="post"><?php echo $_SESSION['flash']; ?>

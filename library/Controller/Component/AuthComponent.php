@@ -1,33 +1,25 @@
 <?php
 
 class AuthComponent extends Component {
+	// Use the User model
 	public $uses = array('User');
 
 	/**
-	 * Try to login with the posted credentials or login given user
+	 * Try to login with the posted credentials
 	 */
-	public function login($user = null) {
-		if(is_null($user)) {
-			return $this->identify($_POST['email'], $_POST['password']);
-		}
-
-		// Log the user in
-		createSession($user);
-
-		return true;
-	}
-
-	/**
-	 * Check for valid credentials
-	 */
-	protected function identify($email, $password) {
+	public function login() {
 		// Encrypt password
 		$password = $this->password($password);
 
 		// Find user
-		if(!$user = $this->User->findByEmailAndPassword($email, $password)) {
+		if(!$user = $this->User->findByEmailAndPassword($_POST['email'], $password)) {
 			return false;
 		}
+
+		// Log the user in
+		$this->createSession($user);
+
+		return true;
 	}
 
 	/**

@@ -4,14 +4,17 @@ class Controller {
 	private $name;
 	private $action;
 
+	// Being set in (base) controller to determine which components must be loaded 
 	public $components = array();
 
-	// Models the controller uses
+	// Being set (base) model to determine which models must be loaded
 	public $uses = array();
 
+	// Holds the variables that must be passed to the view
 	public $variables = array();
 	
 	public function __construct() {
+		// Set controller name
 		$this->name = str_replace('Controller', '', get_class($this));
 
 		$this->initializeComponents();
@@ -76,7 +79,7 @@ class Controller {
 	 * Create a new view and render it
 	 */
 	public function render($templateName = null) {
-		// Include class View
+		// Include classes
 		require_once 'library/View.php';
 		require_once 'application/View/BaseView.php';
 
@@ -85,15 +88,21 @@ class Controller {
 			$templateName = $this->action;
 		}
 
+		// Create the instance
 		$view = new View($this->name, $templateName);
 		
+		// Execute beforeRender() just before the view is rendered
 		$this->beforeRender();
 
+		// Render the view
 		$view->render($this->variables);
 		
 		return $this;
 	}
 
+	/**
+	 * Sets the current acion
+	 */
 	public function setAction($actionName) {
 		if(!method_exists($this, $actionName)) {
 			exit('Action `' . $actionName . '` does not exist');
@@ -104,9 +113,14 @@ class Controller {
 		return $this;
 	}
 	
+	/**
+	 * Executes the currently selected action
+	 */
 	public function execute() {
+		// Execute beforeAction() just before the action is executed
 		$this->beforeAction();
 
+		// Execute the action
 		$this->{$this->action}();
 		
 		return $this;
