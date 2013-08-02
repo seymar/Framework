@@ -1,7 +1,5 @@
 <?php
 
 class BaseController extends Controller {
-	public function beforeFilter() {
-
-	}
+	public $components = array('Session', 'Auth');
 }

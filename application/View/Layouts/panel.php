@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Default Layout</title>
+		<title>Logged in page</title>
 	</head>
 	
 	<body>

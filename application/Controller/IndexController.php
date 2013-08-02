@@ -2,12 +2,14 @@
 
 class IndexController extends BaseController {
 	public function index() {
-		$this->set('contentTitle', 'List of items');
-
-		$items = array('Item1', 'Item2', 'Item3');
+		if($_SERVER['REQUEST_METHOD'] == 'POST') {
+			if($this->Auth->login()) {
+				$this->redirect('');
+			} else {
+				$this->Session->setFlash('Invalid credentials');
+			}
+		}
 		
-		$this->set('items', $items);
-		
-		$this->render();
+		$this->render('login');
 	}
 }
