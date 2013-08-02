@@ -20,6 +20,6 @@ MVC PHP Framework
 			+ default.php
 		* View.php
 * library/
-	+ Router.php
 	+ Database.php
+	+ Router.php
 * index.php

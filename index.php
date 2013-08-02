@@ -12,7 +12,8 @@ $route = new Router();
  */
 $controllerClassName = ucfirst($route->controller) . 'Controller';
 
-require_once 'application/Controller/Controller.php';
+require_once 'library/Controller.php'
+require_once 'application/Controller/BaseController.php';
 require_once 'application/Controller/' . $controllerClassName . '.php';
 
 $controller = new $controllerClassName();
