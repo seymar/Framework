@@ -7,19 +7,29 @@ MVC PHP Framework
 
 * application/
 	+ Controller/
-		* Controller.php
+		* BaseController.php
 		* IndexController.php
 	+ Model/
-		+ Model.php
+		+ BaseModel.php
+		+ User.php
 	+ View/
 		* Elements/
 			+ navigation.php
 		* Index/
-			+ index.php
+			+ login.php
 		* Layouts/
-			+ default.php
-		* View.php
+			+ auth.php
+			+ panel.php
+		* BaseView.php
 * library/
+	+ Controller/
+		* Component/
+			+ AuthComponent.php
+			+ SessionComponent.php
+		* Component.php
+		* Controller.php
+	+ Model/
+		* Model.php
 	+ Database.php
 	+ Router.php
 * index.php
