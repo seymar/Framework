@@ -28,7 +28,7 @@ class Controller {
 	 */
 	public function render($templateName = null) {
 		// Include class View
-		require_once 'library/View.php'
+		require_once 'library/View.php';
 		require_once 'application/View/BaseView.php';
 
 		// Use action name as default template name
