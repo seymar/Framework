@@ -12,6 +12,7 @@ class Controller {
 		return $this;
 	}
 
+	// To be made functional
 	public function beforeFilter() {
 
 	}
