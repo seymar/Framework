@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Login</title>
+		<title>CMS</title>
 		
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
@@ -10,7 +10,7 @@
 			<div class="box">
 				<header class="box-header">
 					<h1>
-						Login
+						<a href="../">C<span class="blue">M</span>S</a>
 					</h1>
 				</header>
 				
