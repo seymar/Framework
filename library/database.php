@@ -1,9 +1,10 @@
 <?php
 
-class Database {
-	public $db;
+class Database extends MySQLi {
+	protected $MySQLi;
+
+	protected $currentQuery = '';
 
 	public function __construct() {
-		$this->db = new MySQLi('localhost', '', '', '');
 	}
 }

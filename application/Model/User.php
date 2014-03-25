@@ -2,18 +2,26 @@
 
 class User extends BaseModel {
 	public function findByEmailAndPassword($email, $password) {
-		$s = $this->db->prepare('SELECT * FROM `' . $this->tableName . '` WHERE `email` = ? AND `password` = ?');
-		$s->bind_param('ss', $email, $password);
-
-		$s->execute();
-		$s->store_result();
-
-		if($s->num_rows == 0) {
-			return null;
-		} elseif($s->num_rows > 1) {
-			exit('More then one user found');
+		$statement = $this->MySQLi->prepare('
+			SELECT
+				*
+			FROM
+				`' . $this->tableName . '`
+			WHERE
+				`email` = ? AND `password` = ?
+			LIMIT 1
+		');
+		
+		$statement->bind_param('ss', $email, $password);
+		
+		$statement->execute();
+		
+		$statement->store_result();
+		
+		if($statement->num_rows !== 1) {
+			return false;
 		}
-
-		return $s->fetch;
+		
+		return $statement->fetch();
 	}
 }

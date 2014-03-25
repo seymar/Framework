@@ -1,11 +1,13 @@
 <?php
 
-class Model extends Database {
-	private $tableName = '';
+class Model {
+	protected $tableName = '';
+
+	protected $MySQLi;
 
 	public function __construct() {
-		parent::__construct();
-
 		$this->tableName = strtolower(get_class($this)) . 's';
+
+		$this->MySQLi = new MySQLi('localhost', '', '', '');
 	}
 }
